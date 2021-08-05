@@ -6,12 +6,12 @@ module.exports = {
   title: 'Argo Monitoring',
   tagline: 'Learn how ARGO Monitoring stack works',
   url: 'https://argoeu.github.io',
-  baseUrl: '/',
+  baseUrl: '/argo-monitoring/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'ARGO', // Usually your GitHub org/user name.
-  projectName: 'Argo Monitoring', // Usually your repo name.
+  organizationName: 'ARGOeu', // Usually your GitHub org/user name.
+  projectName: 'argo-monitoring', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Argo Monitoring',
