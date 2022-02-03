@@ -90,5 +90,28 @@ Monitoring Service has a number of connectors for well-known configuration datab
  - GOCDB (Repository for storing and presenting topology and resources information) 
  - CSV files (predefined format)
  - Json files (predefined format)
+
+
+An example of the Json file is as follows: 
+
+```
+[ 
+  {
+"Service Description (Alphanumeric and basic punctuation)": "My service", 
+"URL": "https://example.com", 
+"SITENAME-SERVICEGROUP": "MY_SITE", 
+"Service Unique ID": "1234", 
+"COUNTRY_NAME": "Greece", 
+"notification flag?": "Yes", 
+"CONTACT_EMAIL": "address@example.com", 
+"Status ": "Development", 
+"SERVICE_TYPE": "my.service.type"
+  } 
+…
+]
+
+```
+
+
  - xml files  (predefined format)             
 
