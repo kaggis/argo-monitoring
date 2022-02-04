@@ -72,16 +72,16 @@ Probes must be provided in the form of RPM packages, where a single package may 
 Some considerations about naming:
 
 * Package should **ensure a unique namespace by using tenant, project (e.g. eudat, argo) or product team (e.g. cream, htcondor) name**.
-* Package name should use **"nagios-plugins-<tenant|project|product team>-xxx" form** where 'xxx' is the name of the service probes are testing (e.g. nagios-plugins-argo-http-server). This makes the name consistent with other nagios plugins. For more generic probes (not project specific) name "nagios-plugins-xxx" is also acceptable (e.g. nagios-plugins-webdav).
+* Package name should use **"argo-probe-<project|organisation|team>-<service_name>" form** where `<service_name>` is the name of the service probes are testing (e.g. argo-probe-grnet-agora). For more generic probes (not project specific) name "argo-probe-<service_type>" is also acceptable (e.g. argo-probe-webdav).
 
 Some considerations about structure:
 
 * Probes should be stored in directory:
-    * `/usr/libexec/argo-monitoring/probes/<probe_namespace>` (For more generic probes (not project specific) directory used by EPEL nagios probes (`/usr/lib64/nagios/plugins/`) is also acceptable.)
+    * `/usr/libexec/argo/probes/` (For more generic probes (not project specific) directory used by EPEL nagios probes (`/usr/lib64/nagios/plugins/`) is also acceptable.)
 * If probes create temporary files, package should create directory:
-    * `/var/lib/argo-monitoring/<probe_namespace>` with ownership nagios:nagios and permissions 750.
+    * `/var/spool/argo/probes/<probe_namespace>/` with ownership nagios:nagios and permissions 750.
 * If probes package contains configuration files, they should be stored in directory:
-    * `/etc/nagios/plugins/<probe_namespace>/`
+    * `/etc/argo/probes/<probe_namespace>/`.
 
 Some considerations about dependencies management:
 
