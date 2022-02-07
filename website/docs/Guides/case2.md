@@ -40,4 +40,4 @@ Minimum set of profiles that must be defined before monitoring can start:
 
 ### Step 4 Start monitoring
 
-Once all the information has been provided, the monitoring of the service starts and the ARGO monitoring Computation and Analytics component calculates availability and reliability of the service, and creates a report. The Infrastructure Manager can have a look at the A/R and status results from the dedicated UI.  Monitoring new services is described in [Use Case 1](guides/case1.md).
+Once all the information has been provided, the monitoring of the service starts and the ARGO monitoring Computation and Analytics component calculates availability and reliability of the service, and creates a report. The Infrastructure Manager can have a look at the A/R and status results from the dedicated UI.  Monitoring new services is described in [Use Case 1](case1.md).
