@@ -131,4 +131,4 @@ The monitoring team will validate the published metric data against the supplied
 
 ### Step 5: Start Monitoring
 
-Once information has been provided, the monitoring of the service starts and the ARGO monitoring Computation and Analytics component calculates availability and reliability of the service, and creates a report. The Infrastructure Manager can have a look at the A/R and status results from the dedicated UI.  Monitoring new services is described in [Use Case 1](guides/case1.md).
+Once information has been provided, the monitoring of the service starts and the ARGO monitoring Computation and Analytics component calculates availability and reliability of the service, and creates a report. The Infrastructure Manager can have a look at the A/R and status results from the dedicated UI.  Monitoring new services is described in [Use Case 1](case1.md).
