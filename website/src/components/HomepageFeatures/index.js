@@ -1,30 +1,29 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import styles from './styles.module.css';
 
 const FeatureList = [
   {
     title: 'Describe your infrastructure',
-    Svg: require('../../static/img/undraw_server_status_5pbv.svg').default,
+    Svg: require('@site/static/img/undraw_server_status_5pbv.svg').default,
     description: (
       <>
-        
+
       </>
     ),
   },
   {
     title: 'Collect rich status information',
-    Svg: require('../../static/img/undraw_percentages_0rur.svg').default,
+    Svg: require('@site/static/img/undraw_percentages_0rur.svg').default,
     description: (
       <>
-         ARGO deploys and runs checks against your infrastructure and collects a rich set of 
-         information from low level items (hosts, services) to higher abstractions (groups, organizations) 
+        ARGO deploys and runs checks against your infrastructure and collects a rich set of information from low level items (hosts, services) to higher abstractions (groups, organizations)
       </>
     ),
   },
   {
     title: 'Rich analytics and reports',
-    Svg: require('../../static/img/undraw_charts.svg').default,
+    Svg: require('@site/static/img/undraw_charts.svg').default,
     description: (
       <>
         The monitoring data pass through the analytics engine and rich reports are generated
@@ -37,7 +36,7 @@ function Feature({Svg, title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

@@ -5,13 +5,13 @@ title: Weights
 
 In ARGO you may combine top level A/R results (such as results referring to you data center, institution as a whole) into a higher level of abstraction such as organisations, projects, federation.
 In this level each member contributes to the final A/R score based on its resource capacity. This contribution is expressed as a weighted average, which is obtained by various ways 
-such us by running bemnchmark on the infrastructure (ex. hep spec 06) 
+such us by running benchmark on the infrastructure (ex. hep spec 06) 
 
 ## How weights are used in the computations 
 
 ARGO Monitoring Service takes into consideration the weights to combine top level A/R results. 
 
-## How can i define the weights
+## How can I define the weights
 
 In ARGO we actually define sets of weights applied to top level items (as we've mentioned, those are groups that represent data centers, institutions etc..). The definition includes:
 - a name 

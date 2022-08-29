@@ -13,7 +13,7 @@ Each probe has a hard-coded built-in static logic in order to compute the probe 
 _With the current implementation_, the acceptable response time is part of the probe configuration. 
 If we want to have _different acceptable response time for a specific customer_, then we will have to create a new probe configuration and execute a new test. 
 
-So in order to have **different acceptable response time for each customer** , we have to easily define these hardcoded values and use them as parameters. So actually we have to  move the metric status computation to something more dynamic like the ARGO analytics engine. So the monitoring probes executed will return the actual data (e.g. the average response time) and then on the ARGO Analytics Engine we can have use multiple threshold profiles, which will be used in order to generate reports based on the customer needs.
+So in order to have **different acceptable response time for each customer**, we have to easily define these hardcoded values and use them as parameters. So actually we have to  move the metric status computation to something more dynamic like the ARGO analytics engine. So the monitoring probes executed will return the actual data (e.g. the average response time) and then on the ARGO Analytics Engine we can have use multiple threshold profiles, which will be used in order to generate reports based on the customer needs.
  
 
 ## Example 

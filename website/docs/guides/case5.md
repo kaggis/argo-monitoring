@@ -61,7 +61,7 @@ This is the configuration that the user will have to use to use the api calls.
 The api authenticates the user using the api-key within the x-api-key header. Users can specify time granularity (monthly or daily) for retrieved results and also format  using the Accept header. Depending on the form of the request the user can request a group, service or service endpoint. 
 
 **Detailed documentation:**
-[https://argoeu.github.io/api/v3/results/](https://argoeu.github.io/api/v2/results/)
+[ARGO web api v3 a/r results](https://argoeu.github.io/argo-web-api/docs/apiv3/v3_ar_results)
 
 **Example:**
 
@@ -77,7 +77,7 @@ $ curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" 
 The api authenticates the user using the api-key within the x-api-key header. Users can specify time granularity (monthly or daily) for retrieved results and also format  using the Accept header. Depending on the form of the request the user can request a group, service or service endpoint. 
 
 **Detailed documentation:**
-[](https://argoeu.github.io/api/v2/status/)[https://argoeu.github.io/api/v3/status/](https://argoeu.github.io/api/v3/status/)
+[ARGO web api docs](https://argoeu.github.io/argo-web-api/)[ARGO web api v3 status results](https://argoeu.github.io/argo-web-api/docs/apiv3/v3_status_results)
 
 **Example:**
 
