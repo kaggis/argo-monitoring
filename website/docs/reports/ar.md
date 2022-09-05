@@ -3,14 +3,14 @@ sidebar_position: 3
 title: A/R results 
 ---
 ## Availability Reliability 
-ARGO Monitoring service , by  generating status timelines for each level of the topology,  can produce useful conclusions about the monitoring item. One very useful conclusion is to decide if the item is available for usage and if it is considered as reliable.   
+ARGO Monitoring service, by  generating status timelines for each level of the topology,  can produce useful conclusions about the monitoring item. One very useful conclusion is to decide if the item is available for usage and if it is considered as reliable.   
 To succeed this,  availability/reliability rates need to be calculated on the timelines. 
 
 ### Availability 
 
 Availability: Service Availability is the fraction of time a service was in the UP Period during the known interval in a given period.
 
-Availability rate is useful to know , as it provides information of the time the monitored item is available for use. Availability is calculated as follows:
+Availability rate is useful to know, as it provides information of the time the monitored item is available for use. Availability is calculated as follows:
 
 ```
 Availability = UP period / KNOWN period 
@@ -31,7 +31,7 @@ and
 
 Reliability : Service Reliability is the ratio of the time interval a service was UP over the time interval it was supposed (scheduled) to be UP in the given period.
 
-Reliability rate is also useful to know , as it provides information about the quality of monitored item during the monitoring time, whereas it is reliable of usage or not. 
+Reliability rate is also useful to know, as it provides information about the quality of monitored item during the monitoring time, whereas it is reliable of usage or not. 
 
 Reliability is calculated as follows:
  
@@ -62,7 +62,7 @@ timestamp  | status
 2021-09-15T18:00:00Z | DOWNTIME
 2021-09-15T22:00:00Z  | OK
 
-Based on these timestamps each status durates as: 
+Based on these timestamps each status lasts as: 
 
  - **OK Status:**         From 00:00 to 03:00 and from 22:00 till the end of the day
  - **CRITICAL  Status:**  From 03:00 to 12:00
@@ -88,7 +88,7 @@ where:
  - **UP** period =OK period + WARNING period=18000 seconds 
  - **UNKNOWN** period: UNKNOWN period + MISSING period=21600 seconds 
  - **Total** period : 86400  seconds
- - **Availabilty** = 18000/(86400-21600)=0.2777 , and converting to the scale of 100 the availability is 27.777
+ - **Availability** = 18000/(86400-21600)=0.2777, and converting to the scale of 100 the availability is 27.777
 
 
 
@@ -102,10 +102,10 @@ where:
  - **UNKNOWN** period: UNKNOWN period+MISSING period. This in numbers means 21600 seconds
  - **ScheduledDowntime** period: 14400 seconds
  - **Total** period : 86400 seconds
- - **Reliability** =18000/(86400-21600-14400)=0.3571 , and converting to the scale of 100 the reliability is 35.771
+ - **Reliability** =18000/(86400-21600-14400)=0.3571, and converting to the scale of 100 the reliability is 35.771
 
  
-ARGO Monitoring Service also calculates results of up period, downtime period , unknown period as:
+ARGO Monitoring Service also calculates results of up period, downtime period, unknown period as:
 
 - **UP** = UP period / Total period.  This in numbers mean 18000/86400 =0.20833 
 - **UNKNOWN**=UNKNOWN period +MISSING period / Total period. | this in numbers mean  21600/86400=0.25 

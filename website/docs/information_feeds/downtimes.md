@@ -14,7 +14,7 @@ Scheduling downtime is an effective way to prevent unnecessary or unwanted notif
 ARGO Monitoring Service takes into consideration the scheduled downtime to calculate the Reliability of a service or a group of services. It also affects the uptime value. At the same time the Monitoring Service doesn't send unnecessary notifications during periods of expected service interruption.
 
 
-## How can i define a Downtime
+## How can I define a Downtime
 
 A scheduled downtime is a combination of the endpoint, the service type and the start and end time of the downtime . 
 

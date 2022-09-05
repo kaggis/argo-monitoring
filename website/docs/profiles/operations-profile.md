@@ -7,7 +7,7 @@ title: Operations Profile
 
 In many cases we need to provide results for top level items that are being monitored. For example if a database service is offered that relies on 2 different hosts, then we need to present a timeline with the status of the service offering itself during the day. To do that we need to combine appropriately the status timelines observed for the  hosts. There many ways to combine them but the usual cases are the following:
 
-- Service is deployed in a high availability fashion among hosts, so we need one of them to be ok for the general service offering to be working. In this case we say that the timelines are combined in an “OR” fashion. E.g. if host1 = OK , host2= CRITICAL the database service will be OK (see figure 1)
+- Service is deployed in a high availability fashion among hosts, so we need one of them to be ok for the general service offering to be working. In this case we say that the timelines are combined in an “OR” fashion. E.g. if host1 = OK, host2= CRITICAL the database service will be OK (see figure 1)
 
 - Service is deployed in a distributed fashion among hosts, so all of them are needed to be in a working state so as the service to be considered in working state. In this case we say that the timelines are combined in an “AND” fashion. E.g. if host1 = OK, host2 = CRITICAL the service offered will be CRITICAL (see figure 2)
 

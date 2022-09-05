@@ -4,7 +4,7 @@ title: Status Timelines
 ---
 
 ## Status Timelines 
-Status Timeline is a report of the status of the monitored item/group of items, during the monitoring time. Knowing the timeline, provides information about the condition of the monitored item  , helps to spot the most problematic metrics and decide about them. It is of major significance especially knowing when the monitored item is in a CRITICAL status , or it is in OK status 
+Status Timeline is a report of the status of the monitored item/group of items, during the monitoring time. Knowing the timeline, provides information about the condition of the monitored item , helps to spot the most problematic metrics and decide about them. It is of major significance especially knowing when the monitored item is in a CRITICAL status, or it is in OK status 
 
 The calculations of the ARGO Monitoring service apply to all levels of the topology, grouping the monitored items based on the topology’s characteristics. Only items that are contained in the topology are included in the calculations, as they are defined by Topology Group, Topology Endpoint.
 
@@ -39,8 +39,8 @@ The timeline result would be as shown in picture: ![](/img/reports/metrictimelin
 
 ### Endpoint Level  - Monitoring a single host  
 
-The next level of the calculations is the endpoint level, producing results for a single host. A host includes multiple metric checks , so the Metric Data are grouped by the host. But not all metric checks of the host need to be included into the calculations. 
-The ARGO Monitoring Service retrieves a Metric Profile report that defines the significant metric check.The Metric Data are filtered based on the given information and computations apply only to the metric checks defined in the Metric Profile reports.  The Argo Monitoring service will combine the timelines of the metric checks and will combine the time interval and statuses into a new timeline.  In order to combine the different statuses of a time interval and conclude into one status the ARGO Monitoring service retrieves an Operation Profile that defines all the possible status combinations. As Operation Profile includes a defined operation with a truth table of possible status combinations, the ARGO Monitoring service retrieves the operation that corresponds to the endpoint level from the Aggregation Profile
+The next level of the calculations is the endpoint level, producing results for a single host. A host includes multiple metric checks, so the Metric Data are grouped by the host. But not all metric checks of the host need to be included into the calculations. 
+The ARGO Monitoring Service retrieves a Metric Profile report that defines the significant metric check. The Metric Data are filtered based on the given information and computations apply only to the metric checks defined in the Metric Profile reports.  The Argo Monitoring service will combine the timelines of the metric checks and will combine the time interval and statuses into a new timeline.  In order to combine the different statuses of a time interval and conclude into one status the ARGO Monitoring service retrieves an Operation Profile that defines all the possible status combinations. As Operation Profile includes a defined operation with a truth table of possible status combinations, the ARGO Monitoring service retrieves the operation that corresponds to the endpoint level from the Aggregation Profile
 
 #### Example:  
 
@@ -83,7 +83,7 @@ In order to combine the different statuses of a time interval and conclude into 
 The monitored service **Web-Site** operates under 3 hosts :
 **host1.example.com**, **host2.example.com**, **host3.example.com**. In order to decide that the service operates successfully it should run successfully to all hosts. ARGO Monitoring Service groups the timelines by the service **Web-Site** and would create status timelines for the service by combining the individual host status timelines.  
  
-The way that the individual hosts’ status timelines are combined to produce the final result for the service is described in the Aggregation Profile. The Aggregation Profile defines the **AND** or **OR** way to aggregate the individual hosts’ status timelines  in order to compute the final timelines. The function **AND** , **OR** and the way they are used for the computations are defined in the Operations Profile. 
+The way that the individual hosts’ status timelines are combined to produce the final result for the service is described in the Aggregation Profile. The Aggregation Profile defines the **AND** or **OR** way to aggregate the individual hosts’ status timelines  in order to compute the final timelines. The function **AND**, **OR** and the way they are used for the computations are defined in the Operations Profile. 
 
 The timeline result would be as shown in picture: ![](/img/reports/servicetimelines.png) 
 
@@ -98,7 +98,7 @@ In the previous example we described how the ARGO Monitoring Service is monitori
 
 A project is using these 3 services for its users. In order for the service offering to be  operational, all of these 3 services should run without problems. In order to monitor them we put them in a group named by the project they belong to.  ARGO Monitoring Service would create status timelines for the project by combining the individual service status timelines.
 
-The way that the individual service status timelines are combined to produce the final result for the group is described in the Aggregation Profile. The Aggregation Profile defines the AND or OR way to aggregate the individual service status timelines  in order to compute the final timelines. The function AND , OR and the way they are used for the computations are defined in the Operations Profile. 
+The way that the individual service status timelines are combined to produce the final result for the group is described in the Aggregation Profile. The Aggregation Profile defines the AND or OR way to aggregate the individual service status timelines  in order to compute the final timelines. The function AND, OR and the way they are used for the computations are defined in the Operations Profile. 
 
 
 The timeline result would be as shown in picture: ![](/img/reports/grouptimelines.png) 

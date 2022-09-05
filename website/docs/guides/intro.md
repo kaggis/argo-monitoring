@@ -56,12 +56,12 @@ A **Tenant** is an isolated instance of the ARGO Monitor service that relies on 
 
 ARGO provides default **UI and POEM URLs** in following form:
 
-* UI: `https://<tenant\_name\>.ui.argo.grnet.gr`
-* POEM: `https://<tenant\_name\>.ui.argo.grnet.gr`
+* UI: `https://<tenant_name>.ui.argo.grnet.gr`
+* POEM: `https://<tenant_name>.ui.argo.grnet.gr`
 
 In case custom ones are to be used, the customer is responsible for providing valid certificates and DNS aliases.
 
-ARGO Monitoring service requires following **[topology](https://argoeu.github.io/argo-monitoring/docs/InformationFeeds/topology)** information in order to monitor services:
+ARGO Monitoring service requires following **[topology](information_feeds/topology.md)** information in order to monitor services:
 
 * the services and service endpoints they are running,
 * the way they are organised (e.g. groups of sites, groups of services),
@@ -86,13 +86,13 @@ Need to be extended to hold the following information for Monitoring.
 
 A **Metric** is a chunk of code that checks specific functionality of a given service. For example a metric such as Portal-WebCheck runs on a site and checks if the HTTP connection responds correctly  or not. 
 
-A Probe is a piece of code that implements single or multiple tests. The probe must comply with [the guidelines for monitoring probes](https://argoeu.github.io/argo-monitoring/docs/Monitoring/guidelines). 
+A Probe is a piece of code that implements single or multiple tests. The probe must comply with [the guidelines for monitoring probes](monitoring/guidelines.md). 
 
 ARGO provides a registry of probes and metrics. New probes and metrics can be added to the registry with the support of the ARGO monitoring team.
 
-A **[Metric Profile](https://argoeu.github.io/argo-monitoring/docs/Profiles/metrics-profile )** is used to associate a Service with the corresponding metrics.
+A **[Metric Profile](profiles/metrics-profile.md)** is used to associate a Service with the corresponding metrics.
 
-An **[Aggregation Profile](https://argoeu.github.io/argo-monitoring/docs/Profiles/aggregation-profile)** defines how to aggregate service statuses into higher hierarchical grouping (i.e. a service\_group) status results. They are actually used to define logical rules on how to aggregate individual service status computations into groups.
+An **[Aggregation Profile](profiles/aggregation-profile.md)** defines how to aggregate service statuses into higher hierarchical grouping (i.e. a service\_group) status results. They are actually used to define logical rules on how to aggregate individual service status computations into groups.
 
 The results of the metrics are computed, into EOSC Monitoring Service calculations, in order to conclude into the operational state of the service, during a specific period. In order to conclude about the operational state of the service, all or part of the metrics that check the service's functionality should be taken into account. In Metrics Profiles are included, for each service, these metrics whose results are considered to the computations of the service's state. For example, a service WebSite runs on host1.example.com. The WebSite service should operate properly, be accessible and some actions should be available such as downloading or uploading material (documents, images etc). Three metrics can apply on the service to check it's functionalities:
 

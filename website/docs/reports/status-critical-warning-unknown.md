@@ -12,7 +12,7 @@ The ARGO Monitoring Service is checking the services at regular intervals. It ac
  - **MISSING**: the check’s state is not recorded
  - **UNKNOWN**: the check could not apply on the monitoring item and as a result the check’s state is unknown
 
-As configuration problems, troublesome services, or other service internal problems occur, the checks on the monitoring items can result in a problematic state (critical , warning or unknown state), for a time period.
+As configuration problems, troublesome services, or other service internal problems occur, the checks on the monitoring items can result in a problematic state (critical, warning or unknown state), for a time period.
 
 ARGO Monitoring service analyzes the status timelines in different levels,  detects the CRITICAL, WARNING, UNKNOWN states and  calculates the duration (in minutes) as well as the number of appearances of each state in the daily timelines. ARGO Monitoring service creates a report, for each of the problematic states, with the list of the monitored items which remain in the state for the longest time period.
 
@@ -32,11 +32,11 @@ ARGO Monitoring Service applies calculations on the recorded status timeline and
 
 The duration of the status is calculated by aggregating  the interval duration of each status appearance in the timeline.
 
-In the above example, as the timeline is divided in 20 equal slots , each slot has a duration of  36 minutes.
+In the above example, as the timeline is divided in 20 equal slots, each slot has a duration of  36 minutes.
 
 The ARGO Monitoring Service detects that :
 
- - WARNING appears 2 times , with duration 72 minutes (2 X 36 minutes)
- - CRITICAL appears 5 times , with duration 180 minutes (5 X 36 minutes)
- - UNKNOWN appears 1 time, , with duration 36 minutes (1 X 36 minutes)
+ - WARNING appears 2 times, with duration 72 minutes (2 X 36 minutes)
+ - CRITICAL appears 5 times, with duration 180 minutes (5 X 36 minutes)
+ - UNKNOWN appears 1 time,, with duration 36 minutes (1 X 36 minutes)
 

@@ -14,16 +14,16 @@ Based on that each service may have a state :
  - **MISSING**: the check’s state is not recorded
  - **UNKNOWN**: the check could not apply on the monitoring item and as a result the check’s state is unknown
  
-As configuration problems , troublesome services, or other service internal problems occur, the checks on the monitoring items can result in a problematic state (critical , warning or unknown state), for a time period. 
+As configuration problems, troublesome services, or other service internal problems occur, the checks on the monitoring items can result in a problematic state (critical, warning or unknown state), for a time period. 
 
-The monitored item is part of a multi-leveled hierarchy , a.k.a topology. A topology is organized as following:  
+The monitored item is part of a multi-level hierarchy, a.k.a topology. A topology is organized as following:  
 ```
 |--group         
      |--service
          |--endpoint
 	          |--metric
 ```
-The results of these daily checks a.k.a Metric Data, are ingested and stored in HDFS. Each Metric Data record includes information about the timestamp and the status of the monitored metric check ,  also information about the topology  and some extra information regarding the check .
+The results of these daily checks a.k.a Metric Data, are ingested and stored in HDFS. Each Metric Data record includes information about the timestamp and the status of the monitored metric check,  also information about the topology  and some extra information regarding the check .
 
 An example metric result in is shown below:
 ```json

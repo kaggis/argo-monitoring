@@ -14,7 +14,7 @@ Topology includes all the necessary information about how an infrastructure is s
 
 The ways the services are organized (sites, services, projects)  can be part of a bigger structure, that gathers a number of groups. 
 
-Organisations offer services that can be grouped based on the location (SITES) , or based on the project they are used by (PROJECT) . This can be one more level to the topology hierarchy. The topology should also provide information about this bigger group , it's type and the services it contains.
+Organisations offer services that can be grouped based on the location (SITES), or based on the project they are used by (PROJECT) . This can be one more level to the topology hierarchy. The topology should also provide information about this bigger group, it's type and the services it contains.
 
 The ARGO Monitoring Service allows the users to model their infrastructure by defining multiple level of groups, starting from groups of Service Endpoints and moving to higher level groups of groups. In this way it is easy to model different infrastructure architectures. We have to mention here that the levels of the topology is something that can be updated and depends on the requirements of each infrastructure.
 
@@ -30,7 +30,7 @@ But before we start lets explain a few acronyms.
 
 ## Examples
 
-Via a Topology the structure of  a Project , an Organization, a SITE, can be monitored. For example: 
+Via a Topology the structure of  a Project, an Organization, a SITE, can be monitored. For example: 
 
 ### Example 1: Monitoring the services of a Project- The topology:
 
@@ -42,7 +42,7 @@ Project
              |--Service Endpoints 
 ```
 
-As an example, we may say that we have a project (MyProject) which offers an AAI Service and a Document Management Service. The information about the topology includes the group  (MyProject) , the services (AAI service, Document Management Service) that combine the service endpoints (aai.myproject.org, aai1.myproject.org) and (docu.myproject.org, database.myproject.org) . The following image is trying to represent the hierarchy of the topology. 
+As an example, we may say that we have a project (MyProject) which offers an AAI Service and a Document Management Service. The information about the topology includes the group  (MyProject), the services (AAI service, Document Management Service) that combine the service endpoints (aai.myproject.org, aai1.myproject.org) and (docu.myproject.org, database.myproject.org) . The following image is trying to represent the hierarchy of the topology. 
 
 ```
                                     MyProject
@@ -63,7 +63,7 @@ ORGANINATION
 
 ```
 
-As an example,  we may say that we have an organization , such as GRNET , which has a number of Sites like HEBLAB ,IASA,EKT. Each Site gathers a number of services like SRM and WEBDAV.  These services combine a number of  like service-endpoints grid02.physics.uoi.gr , se01.marie.hellasgrid.gr, se01.athena.hellasgrid.gr. The following image is trying to represent the hierarchy of the topology. 
+As an example,  we may say that we have an organization, such as GRNET, which has a number of Sites like HEBLAB,IASA,EKT. Each Site gathers a number of services like SRM and WEBDAV.  These services combine a number of  like service-endpoints grid02.physics.uoi.gr, se01.marie.hellasgrid.gr, se01.athena.hellasgrid.gr. The following image is trying to represent the hierarchy of the topology. 
 
 ```
                                             GRNET 

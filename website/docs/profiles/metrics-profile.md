@@ -5,11 +5,11 @@ title: Metrics Profile
 
 ## Description
 An infrastructure may offer various services. These services need to be checked periodically in order to decide their operational state. The various functionalities of a given service are checked by metrics (a chunk of code). For example a metric such as Web-Site.Portal-WebCheck runs on a site and checks if the http connection responds or not. The results of the metrics are computed, into ARGO Monitoring Service calculations, in order to conclude into the operational state of the service, during a specific period.
-In order to conclude about the operational state of the service, all or part of the metrics that check the service’s functionality should be taken into account. In Metrics Profiles are included , for each service, these metrics whose results are considered to the computations of the service’s state.
+In order to conclude about the operational state of the service, all or part of the metrics that check the service’s functionality should be taken into account. In Metrics Profiles are included, for each service, these metrics whose results are considered to the computations of the service’s state.
 
 
 ##### Example 1  - Metrics Profile for a Site service: 
-A service of type Site runs on host1.example.com. The Site service should operate properly , be accessible and some actions should be available such as downloading or uploading material (documents, images etc).
+A service of type Site runs on host1.example.com. The Site service should operate properly, be accessible and some actions should be available such as downloading or uploading material (documents, images etc).
 Three metrics can apply on the service to check it’s functionalities:
 * __Portal-WebCheck__ is a metric to check if the http responds
 * __http.download__ is a metric to check if download functionality operates well

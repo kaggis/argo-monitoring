@@ -51,7 +51,7 @@ i. GRNET SA-- as processor -- processes its "users" personal data as referred to
 
 -   Authentication of Argo Service Monitoring service users
 
--   "Users" authentication is carried out through the login service [Feredated AAI](#)
+-   "Users" authentication is carried out through the login service [Federated AAI](#)
 
 -   Providing the Argo Service Monitoring service
 
@@ -72,7 +72,7 @@ B. Categories of personal data processed:
 
 i. For the Authentication of Argo Service Monitoring "users"
 
-The authentication of the service "users" is carried out through the [Feredated AAI](#) service , the local login of individual components. For the sole purpose of the authentication of the service "users", GRNET SA collects through the aforementioned authentication procedure, and processes -- as processor- the following personal data per component:
+The authentication of the service "users" is carried out through the [Federated AAI](#) service, the local login of individual components. For the sole purpose of the authentication of the service "users", GRNET SA collects through the aforementioned authentication procedure, and processes -- as processor- the following personal data per component:
 
 - ARGO MONITORING - WEB UI
   - Name
