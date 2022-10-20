@@ -12,7 +12,7 @@ Based on the Service-ID of the service from the  Providers Portal you can get th
 
 ## Solution
 
-When a resource is on-boarded in the Providers Portal is automatically get a resource-id. By the time it is on-boarded, it is also integrated with 
+When a resource is on-boarded in the Providers Portal is automatically gets a resource-id. By the time it is on-boarded, it is also integrated with 
 EOSC-Core services like Monitoring. The Monitoring Service based on the data defined in the Providers Portal, starts monitoring the resource and 
 creates near real time status reports, and availability and reliability reports. This is the information a customer can get for a resource. In this 
 guide we describe how the customer can get the Status data for a specific resource-id.
@@ -28,12 +28,12 @@ In the description of the ticket please describe the use case and the service th
 **Example**
  
  _Title_: Account request to fetch the status of the services
- _Description_: I am the service owner of EOSC Marketplace and i would like to display the status monitoring data. I would like to request an accoount 
+ _Description_: I am the service owner of EOSC Marketplace and i would like to display the status monitoring data. I would like to request an account 
  to get access to the onboarded resources.  
 
 ### Step 2 The response 
 
-In the respose you will get the following information 
+In the response you will get the following information 
 
 
 | Name            | Description                                                                                           | 
