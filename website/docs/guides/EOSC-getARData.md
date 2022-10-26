@@ -65,9 +65,9 @@ The API method supports the following parameters
 
 You may test the API call in the following links. 
 
-[Details of the API Call](????) 
+[Details of the API Call](https://argoeu.github.io/argo-web-api/docs/apiv3/v3_ar_results/#example-request-1-default-daily-granularity-with-specific-resource-id) 
 
-[Test it online: AR Results (v3): GET /v3/results/{report_name}/id/{resource_id}](???)
+[Test it online: AR Results (v3): GET /v3/results/{report_name}/id/{resource_id}](https://argoeu.github.io/argo-web-api/openapi/explore#/Availability%20%26%20Reliability%20Results%20(v3)/arEndpointsByID)
 
 #### Example Request 1: default daily granularity with specific resource-id
 
@@ -112,8 +112,16 @@ Status: 200 OK
                 "URL": "http://submit.queue01.example.com"
             },
       "results": [
-        {
+       {
           "date": "2015-06-22",
+          "availability": "99.99999900000002",
+          "reliability": "99.99999900000002",
+          "unknown": "0",
+          "uptime": "1",
+          "downtime": "0"
+        },
+        {
+          "date": "2015-06-23",
           "availability": "99.99999900000002",
           "reliability": "99.99999900000002",
           "unknown": "0",
