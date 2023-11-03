@@ -24,8 +24,8 @@ Monitoring service relies on topology database to provide the following informat
 ## Metrics & probes
 
 A metric is a procedure that checks specific functionality of a given service, i.e. a single measurement. For example:
-* [org.nagios.WebCheck](https://poem.argo.grnet.gr/ui/public_metrictemplates/org.nagios.WebCheck): checks the http if it responds;
-* [eu.egi.CertValidity](https://poem.argo.grnet.gr/ui/public_metrictemplates/eu.egi.CertValidity): checks the validity of a certificate.
+* [generic.http.connect](https://poem.argo.grnet.gr/ui/public_metrictemplates/generic.http.connect): checks the http if it responds;
+* [generic.certificate.validity](https://poem.argo.grnet.gr/ui/public_metrictemplates/generic.certificate.validity): checks the validity of a certificate.
 
 ### Service probe
 
