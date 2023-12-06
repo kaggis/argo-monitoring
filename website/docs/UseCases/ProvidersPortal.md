@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Providers Portal Use Case
+title: Monitoring Data in the Providers Portal 
 ---
 
 The EOSC Providers Portal (https://providers.eosc-portal.eu/) is a single platform for providers to onboard their organization into EOSC portal, register and manage their resources and gain rich insights about their offerings in the catalogue. It also offers the Provider dashboard, where representatives from provider organizations have a detailed view on their offerings in the EOSC portal as well as various usage statistics on their resources. 
