@@ -31,6 +31,11 @@ function HomepageHeader() {
             to="https://argoeu.github.io/argo-messaging">
             Messaging ↗
           </Link>
+          <Link
+            className="button button--secondary margin-left--lg button--lg"
+            to="https://argoeu.github.io/argo-api-authn">
+            Authn ↗
+          </Link>
         </div>
         
         
