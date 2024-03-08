@@ -49,7 +49,7 @@ Definition|Value|Description
 |---|---|---
 GROUP|GRNET|A collection of services 
 SERVICE|AMS|The type of one of the services of the collection 
-SERVICE endpoint|msg.argo.grnet.gr(AMS)|is defined as the combination of a hostname and Service Type. (a Service Type of AMS listening on port/s <ams-port/s\> on the host msg.argo.grnet.gr is a service endpoint) 
+SERVICE endpoint|msg.argo.grnet.gr(AMS)|is defined as the combination of a hostname and Service Type. (a Service Type of AMS listening on port/s `<ams-port/s\>`on the host msg.argo.grnet.gr is a service endpoint) 
 Grouping used in the report|SERVICEGROUPS|the way the services are organized (e.g. in groups of sites, in groups of services) in the monitoring engine
 A/R report|Default|The place where the A/R results are provided. 
 Status report|Default|The place where  status results are provided. 

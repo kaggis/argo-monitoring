@@ -67,7 +67,7 @@ You may test the API call in the following links.
 
 [Details of the API Call](https://argoeu.github.io/argo-web-api/docs/apiv3/v3_ar_results/#example-request-1-default-daily-granularity-with-specific-resource-id) 
 
-[Test it online: AR Results (v3): GET /v3/results/{report_name}/id/{resource_id}](https://argoeu.github.io/argo-web-api/openapi/explore#/Availability%20%26%20Reliability%20Results%20(v3)/arEndpointsByID)
+[Test it online: AR Results (v3): GET `/v3/results/{report_name}/id/{resource_id}`](https://argoeu.github.io/argo-web-api/openapi/explore#/Availability%20%26%20Reliability%20Results%20(v3)/arEndpointsByID)
 
 #### Example Request 1: default daily granularity with specific resource-id
 

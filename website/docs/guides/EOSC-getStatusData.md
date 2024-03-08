@@ -58,7 +58,7 @@ You may test the API call or get detailed information about the API method in th
 
 [Details of the API Call](https://argoeu.github.io/argo-web-api/docs/apiv3/v3_status_results/#get-list-latest-status-result-for-a-specific-endpoint-using-its-resource-id) 
 
-[Test it online: Status Results (v3): GET /v3/status/{report_name}/id/{resource_id}](https://argoeu.github.io/argo-web-api/openapi/explore#/Status%20Results%20(v3)/statusEndpointsByID)
+[Test it online: Status Results (v3): GET `/v3/status/{report_name}/id/{resource_id}`](https://argoeu.github.io/argo-web-api/openapi/explore#/Status%20Results%20(v3)/statusEndpointsByID)
 
 
 

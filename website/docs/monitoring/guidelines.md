@@ -72,7 +72,10 @@ Probes must be provided in the form of RPM packages, where a single package may 
 Some considerations about naming:
 
 * Package should **ensure a unique namespace by using tenant, project (e.g. egi, eudat, argo) or product team (e.g. cream, htcondor) name**.
-* Package name should use **"argo-probe-<project|organisation|team>-<service_name>" form** where `<service_name>` is the name of the service probes are testing (e.g. argo-probe-grnet-agora). For more generic probes (not project specific) name "argo-probe-<service_type>" is also acceptable (e.g. argo-probe-webdav).
+* Package name should use 
+`"argo-probe-<project|organisation|team>-<service_name>"` form
+
+ where `<service_name>` is the name of the service probes are testing (e.g. argo-probe-grnet-agora). For more generic probes (not project specific) name `"argo-probe-<service_type>"` is also acceptable (e.g. argo-probe-webdav).
 
 Some considerations about structure:
 
