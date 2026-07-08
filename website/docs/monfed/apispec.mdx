@@ -1,0 +1,18 @@
+---
+title: Explore the API
+description: Explore the Monitoring Federation API specification in openapi format.
+sidebar_position: 99
+---
+
+# API Mon specification
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+export const Redirect = () => {
+  const url = useBaseUrl('/openapi/explore.html');
+  window.location.replace(url);
+  return <p>Redirecting… <a href={url}>open the API Explorer</a> if nothing happens.</p>;
+};
+
+<BrowserOnly>{() => <Redirect />}</BrowserOnly>
