@@ -1,0 +1,665 @@
+openapi: 3.0.3
+info:
+  title: Monitoring Federating Capability API Spec
+  description: |
+    API for retrieving monitoring capability metrics such as availability, uptime along with status, downtimes and issues.
+
+    Example top-level items:
+
+    * argo-mon
+    * argo-msg
+    * argo-acc
+  version: 3.0.0
+servers:
+- url: https://api.node.foo
+tags:
+- name: summary
+  description: Latest status, metrics, downtimes and issues per item
+- name: metrics
+  description: Monitoring capability metrics such as availability, uptime
+- name: status
+  description: Current and historical status (state) of monitored items
+- name: downtimes
+  description: Scheduled or recorded downtime windows for monitored items
+- name: issues
+  description: Recorded issues for monitored items
+paths:
+  /monitoring/metrics:
+    get:
+      tags:
+      - metrics
+      summary: List metrics for all top level services listed in this node
+      description: |
+        Returns metrics for all top-level service, or for a filtered subset via `name` and/or `search`. Supports either a single `date` or a `start-date`/`end-date` range (mutually exclusive). `granularity` and `metric` apply only to this route family.
+      parameters:
+      - $ref: '#/components/parameters/ItemFilter'
+      - $ref: '#/components/parameters/SearchFilter'
+      - $ref: '#/components/parameters/Date'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/Granularity'
+      - $ref: '#/components/parameters/MetricFilter'
+      responses:
+        '200':
+          description: Metrics results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - date: '2026-07-02'
+                    availability: 100
+                    uptime: 97.5
+                - name: argo-msg
+                  results:
+                  - date: '2026-07-02'
+                    availability: 100
+                    uptime: 99.1
+                - name: argo-acc
+                  results:
+                  - date: '2026-07-02'
+                    availability: 100
+                    uptime: 99.8
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /monitoring/metrics/{name}:
+    get:
+      tags:
+      - metrics
+      summary: Get metrics for a single service
+      description: |
+        Get metrics by targeting a specific top level service. Supports either a single `date` or a `start-date`/`end-date` range (mutually exclusive). `granularity` and `metric` apply only to this route family.
+      parameters:
+      - $ref: '#/components/parameters/ItemNamePath'
+      - $ref: '#/components/parameters/Date'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/Granularity'
+      - $ref: '#/components/parameters/MetricFilter'
+      responses:
+        '200':
+          description: Metrics results for the item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - date: '2026-07-02'
+                    availability: 100
+                    uptime: 97.5
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitoring/status:
+    get:
+      tags:
+      - status
+      summary: List status timelines for all available services
+      description: |
+        Returns current status timelines for all top-level services, or a filtered subset via `name` and/or `search`. Supplying `start-date`/`end-date` returns the status timeline over that range instead of the current state.
+      parameters:
+      - $ref: '#/components/parameters/ItemFilter'
+      - $ref: '#/components/parameters/SearchFilter'
+      - $ref: '#/components/parameters/Date'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Status results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - timestamp: '2026-07-02T06:49:32Z'
+                    state: OK
+                - name: argo-msg
+                  results:
+                  - timestamp: '2026-07-02T06:49:32Z'
+                    state: OK
+                - name: argo-acc
+                  results:
+                  - timestamp: '2026-07-02T06:49:32Z'
+                    state: OK
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /monitoring/status/{name}:
+    get:
+      tags:
+      - status
+      summary: Get status for a single service
+      description: |
+        Get status by targeting a specific top level item. With no date params, returns the current state (one result). With `start-date`/`end-date`, returns the status timeline over that range (multiple results).
+      parameters:
+      - $ref: '#/components/parameters/ItemNamePath'
+      - $ref: '#/components/parameters/Date'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Status results for the item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - timestamp: '2026-07-02T06:49:32Z'
+                    state: OK
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitoring/downtimes:
+    get:
+      tags:
+      - downtimes
+      summary: List downtimes for all services
+      description: |
+        Returns recorded downtime windows for all top-level services, or a filtered subset via `name` and/or `search`. `start-date`/`end-date` filter to downtimes overlapping that range.
+      parameters:
+      - $ref: '#/components/parameters/ItemFilter'
+      - $ref: '#/components/parameters/SearchFilter'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Downtime results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DowntimesListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - name: Scheduled maintenance
+                    description: Database upgrade window
+                    start-time: '2026-06-28T02:00:00Z'
+                    end-time: '2026-06-28T04:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /monitoring/downtimes/{name}:
+    get:
+      tags:
+      - downtimes
+      summary: Get downtimes for a single service
+      description: |
+        Get downtimes by targeting a specific top level service.
+      parameters:
+      - $ref: '#/components/parameters/ItemNamePath'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Downtime results for the service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DowntimesListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - name: Scheduled maintenance
+                    description: Database upgrade window
+                    start-time: '2026-06-28T02:00:00Z'
+                    end-time: '2026-06-28T04:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitoring/issues:
+    get:
+      tags:
+      - issues
+      summary: List issues for all services
+      description: |
+        Returns monitoring issues for top level services, or a filtered subset via `name` and/or `search`. `start-date`/`end-date` filter to issues timestamped within that range.
+      parameters:
+      - $ref: '#/components/parameters/ItemFilter'
+      - $ref: '#/components/parameters/SearchFilter'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Issue results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssuesListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - timestamp: '2026-07-01T14:22:10Z'
+                    host: argo-mon-api-03
+                    source: argo-mon-api
+                    message: certificate expired - could not connect
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /monitoring/issues/{name}:
+    get:
+      tags:
+      - issues
+      summary: Get issues for a single item
+      description: |
+        Get issues by targeting a specific top level item.
+      parameters:
+      - $ref: '#/components/parameters/ItemNamePath'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Issue results for the item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssuesListResponse'
+              example:
+                data:
+                - name: argo-mon
+                  results:
+                  - name: High latency
+                    timestamp: '2026-07-01T14:22:10Z'
+                    host: argo-mon-api-03
+                    source: argo-mon-api
+                    message: p99 latency exceeded 2s threshold
+                    summary: API latency spike
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitoring/summary:
+    get:
+      tags:
+      - summary
+      summary: List summary across multiple items
+      description: |
+        Returns a combined at-a-glance view (current status, current metrics, active/recent downtimes and issues) for all top-level items, or a filtered subset via `name` and/or `search`.
+      parameters:
+      - $ref: '#/components/parameters/ItemFilter'
+      - $ref: '#/components/parameters/SearchFilter'
+      responses:
+        '200':
+          description: Summary results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+              example:
+                data:
+                - name: argo-mon
+                  status: OK
+                  metrics:
+                    availability: 100
+                    uptime: 99
+                  downtimes: []
+                  issues: []
+                - name: argo-msg
+                  status: CRITICAL
+                  metrics:
+                    availability: 100
+                    uptime: 97.2
+                  downtimes: []
+                  issues:
+                  - timestamp: '2026-07-02T09:10:00Z'
+                    host: argo-msg-mq-01
+                    source: message-queue
+                    message: Consumer lag exceeded 5000 messages
+                - name: argo-acc
+                  status: OK
+                  metrics:
+                    availability: 100
+                    uptime: 99.9
+                  downtimes: []
+                  issues: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /monitoring/summary/{name}:
+    get:
+      tags:
+      - summary
+      summary: Get summary for a single service
+      description: |
+        Get summary by targeting a specific top level service. Returns a combined at-a-glance view (current status, current metrics, active/recent downtimes and issues) for the service.
+      parameters:
+      - $ref: '#/components/parameters/ItemNamePath'
+      responses:
+        '200':
+          description: Summary result for the item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+              example:
+                data:
+                - name: argo-mon
+                  status: OK
+                  metrics:
+                    availability: 100
+                    uptime: 99
+                  downtimes: []
+                  issues: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    ItemNamePath:
+      name: name
+      in: path
+      required: true
+      description: Identifier of the top-level monitored service.
+      schema:
+        type: string
+        enum:
+        - argo-mon
+        - argo-msg
+        - argo-acc
+      example: argo-mon
+    ItemFilter:
+      name: name
+      in: query
+      required: false
+      description: |
+        Filter to one or more specific top-level service by exact name. Repeat the parameter for multiple items.
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+      example:
+      - argo-mon
+      - argo-msg
+      - argo-acc
+    SearchFilter:
+      name: search
+      in: query
+      required: false
+      description: Fuzzy searching results
+      schema:
+        type: string
+      example: argo
+    Date:
+      name: date
+      in: query
+      required: false
+      description: |
+        A single date to query. Mutually exclusive with `start-date` / `end-date`.
+      schema:
+        type: string
+        format: date
+      example: '2026-06-01'
+    StartDate:
+      name: start-date
+      in: query
+      required: false
+      description: |
+        Start of a date range. Must be supplied together with `end-date`. Mutually exclusive with `date`.
+      schema:
+        type: string
+        format: date
+      example: '2026-06-01'
+    EndDate:
+      name: end-date
+      in: query
+      required: false
+      description: |
+        End of a date range. Must be supplied together with `start-date`. Mutually exclusive with `date`.
+      schema:
+        type: string
+        format: date
+      example: '2026-06-30'
+    Granularity:
+      name: granularity
+      in: query
+      required: false
+      description: |
+        Aggregation interval for range queries. Applies only to metrics routes; not supported on status/downtimes/issues routes.
+      schema:
+        type: string
+        enum:
+        - daily
+        - monthly
+    MetricFilter:
+      name: metric
+      in: query
+      required: false
+      description: |
+        Filter to one or more metric types. Repeat the parameter for multiple types. Omit to receive all metric types. Applies only to metrics routes.
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - availability
+          - uptime
+      example:
+      - availability
+      - uptime
+  schemas:
+    MetricsEntry:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Identifier of the item.
+          example: argo-mon
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricResult'
+    MetricResult:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2026-07-02'
+        availability:
+          type: number
+          format: double
+          description: Percentage, 0-100 scale.
+          example: 100
+        uptime:
+          type: number
+          format: double
+          description: Percentage, 0-100 scale.
+          example: 97.5
+    StatusEntry:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Identifier of the item.
+          example: argo-mon
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusResult'
+    StatusResult:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-07-02T06:49:32Z'
+        state:
+          type: string
+          enum:
+          - OK
+          - CRITICAL
+          - WARNING
+          - UNKNOWN
+          example: OK
+    DowntimesEntry:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Identifier of the item.
+          example: argo-mon
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DowntimeResult'
+    DowntimeResult:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Short name/title of the downtime window.
+          example: Scheduled maintenance
+        description:
+          type: string
+          example: Database upgrade window
+        start-time:
+          type: string
+          format: date-time
+          example: '2026-06-28T02:00:00Z'
+        end-time:
+          type: string
+          format: date-time
+          example: '2026-06-28T04:00:00Z'
+    IssuesEntry:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Identifier of the item.
+          example: argo-mon
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueResult'
+    IssueResult:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-07-01T14:22:10Z'
+        host:
+          type: string
+          example: argo-mon-api-03
+        source:
+          type: string
+          example: argo-mon-api
+        message:
+          type: string
+          description: monitoring message produced by the check
+          example: Critical! Cannot login to the device
+    SummaryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+    ItemSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Identifier of the item.
+          example: argo-mon
+        status:
+          type: string
+          description: Current status of the item.
+          enum:
+          - OK
+          - WARNING
+          - CRITICAL
+          - UNKNOWN
+          example: OK
+        metrics:
+          $ref: '#/components/schemas/SummaryMetrics'
+        downtimes:
+          type: array
+          description: Active or recent downtime windows for the item.
+          items:
+            $ref: '#/components/schemas/DowntimeResult'
+        issues:
+          type: array
+          description: Active or recent issues for the item.
+          items:
+            $ref: '#/components/schemas/IssueResult'
+    SummaryMetrics:
+      type: object
+      properties:
+        availability:
+          type: number
+          format: double
+          description: Percentage, 0-100 scale.
+          example: 100
+        uptime:
+          type: number
+          format: double
+          description: Percentage, 0-100 scale.
+          example: 99
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    MetricsListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricsEntry'
+    StatusListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusEntry'
+    DowntimesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DowntimesEntry'
+    IssuesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssuesEntry'
+  responses:
+    BadRequest:
+      description: |
+        Invalid parameter combination (e.g. both `date` and `start-date` supplied, or `start-date` without `end-date`).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Item not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
