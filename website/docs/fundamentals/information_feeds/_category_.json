@@ -1,6 +1,6 @@
 {
-    "label": "Reports",
-    "position": 5,
+    "label": "Information Feeds",
+    "position": 1,
     "link": {
       "type": "generated-index"
     }

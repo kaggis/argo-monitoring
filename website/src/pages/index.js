@@ -19,12 +19,12 @@ function HomepageHeader() {
           <Link
             className="button button--primary button--lg"
             to="/docs/intro">
-            General Docs <em>(start here)</em>
+            Introduction <em>(start here)</em>
           </Link>
           <Link
-            className="button button--secondary margin-left--lg button--lg"
-            to="https://argoeu.github.io/argo-web-api/">
-            Web API ↗
+            className="button button--primary margin-left--lg button--lg"
+            to="/docs/ui/introduction">
+            Monitoring UI
           </Link>
           <Link
             className="button button--secondary margin-left--lg button--lg"
